@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-struct Memo: Hashable {
+class Memo: NSObject {
     var uuid: UUID = UUID()
     var isDone: Bool
     var content: String
@@ -18,7 +18,8 @@ struct Memo: Hashable {
         self.content = content
     }
     
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(uuid)
+    static func == (lhs: Memo, rhs: Memo) -> Bool {
+        return lhs.uuid == rhs.uuid
     }
+    
 }
